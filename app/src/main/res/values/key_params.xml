@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="api_key">e9f14e491f886bb67e3ba5e9273d16c94a247a93fa8a5aed105ec5162307b2f6</string>
+    <string name="base_url">https://min-api.cryptocompare.com/data/</string>
+</resources>

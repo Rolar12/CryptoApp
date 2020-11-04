@@ -20,7 +20,7 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
     val priceList = db.coinPriceInfoDao().getPriceList()
 
     fun loadData() {
-        val disposable: Disposable = ApiFactory.apiService.getTopCoinsInfo(limit = 15)
+        val disposable: Disposable = ApiFactory.apiService.getTopCoinsInfo(limit = 10)
             .map { it.data?.map { it.coinInfo?.name }?.joinToString(",") }
             .flatMap { it?.let { it1 -> ApiFactory.apiService.getFullPriceList(fSymbs = it1) } }
             .map { getPriceListFromRawData(it) }

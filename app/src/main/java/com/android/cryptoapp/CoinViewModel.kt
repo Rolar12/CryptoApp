@@ -3,6 +3,7 @@ package com.android.cryptoapp
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import com.android.cryptoapp.api.ApiFactory
 import com.android.cryptoapp.database.AppDatabase
 import com.android.cryptoapp.pojo.CoinPriceInfo
@@ -18,6 +19,10 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
     private val compositeDisposable = CompositeDisposable()
 
     val priceList = db.coinPriceInfoDao().getPriceList()
+
+    fun getDetailInfo(fSym: String): LiveData<CoinPriceInfo> {
+        return db.coinPriceInfoDao().getPriceInfoAboutCoin(fSym)
+    }
 
     fun loadData() {
         val disposable: Disposable = ApiFactory.apiService.getTopCoinsInfo(limit = 10)
